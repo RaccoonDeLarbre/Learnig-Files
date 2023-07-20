@@ -59,6 +59,7 @@ def psswcheck():
         root.after(3000, lambda: acsinfolabel.config(text="Please try again", fg="white"))
         # closes window when trynb hits 0
         if trynb == 0:
+            acsinfolabel.config(text="closing session...", fg="red")
             root.after(500, root.destroy)
 
 # opens user file
