@@ -4,8 +4,9 @@ import os
 # window
 root = tk.Tk()
 root.title("Password Check Window")
-root.geometry("500x300")
+root.attributes("-fullscreen", True)
 root.configure(bg="#5A5A5A")
+
 
 # 'accounts' in the app
 user = "blank"
@@ -28,7 +29,7 @@ def psswcheck():
         acsinfolabel.config(text="Access Granted", fg="green")
         userwelcome.config(text="Welcome "+ user )
         trynb_widget.place_forget()
-        openuserfile.place(x=200, y=125)
+        openuserfile.place(x=600, y=125)
 
     elif pssw == "heatfromfire":
 
@@ -39,7 +40,7 @@ def psswcheck():
         acsinfolabel.config(text="Access Granted", fg="green")
         userwelcome.config(text="Welcome "+ user )
         trynb_widget.place_forget()
-        openuserfile.place(x=200, y=125)
+        openuserfile.place(x=600, y=125)
     else:
         # makes sure trynb doesn't go below 0
         if trynb > 0:
@@ -51,6 +52,7 @@ def psswcheck():
             tries = " tries left"
         # updates trynb widget & info widget
         userwelcome.config(text="Welcome")
+        openuserfile.place_forget()
         trynb_widget.config(text=str(trynb) + tries)
         trynb_widget.place(x=125, y=75)
         acsinfolabel.config(text="Access Denied", fg="red")
@@ -75,10 +77,16 @@ def on_enter(event):
     enterbutton.invoke()
 root.bind("<Return>", on_enter)
 
+def on_escape(event):
+    quitbutton.invoke()
+root.bind("<Escape>", on_escape)
+
 # buttons
 enterbutton = tk.Button(root, command=psswcheck)
 
 openuserfile = tk.Button(root, width=16, text="Open your file", bg="black", fg="white", command=openfile)
+
+quitbutton = tk.Button(root, text="Quit", bg="black", fg="white", command=root.destroy)
 
 # entry widget
 entry_widget = tk.Entry(root, width=15,show="•", bg="black", fg="white", font=("Arial", 11))
@@ -91,9 +99,10 @@ userwelcome = tk.Label(root, width=13, text="Welcome", bg="black", fg="white", f
 trynb_widget = tk.Label(root, text=str(trynb) + tries, bg="black", fg="white", font=("Arial", 11))
 
 # widget locations/places widgetsS
-entry_widget.place(x=200, y=75)
-acsinfolabel.place(x=200, y=100)
+entry_widget.place(x=600, y=300)
+acsinfolabel.place(x=600, y=323)
 trynb_widget.place(x=125, y=75)
-userwelcome.place(x=200, y=50)
+userwelcome.place(x=600, y=275)
+quitbutton.place(x=1320, y=735)
 
 root.mainloop()
