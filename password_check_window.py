@@ -59,10 +59,10 @@ def psswcheck():
         root.after(3000, lambda: acsinfolabel.config(text="Please try again", fg="white"))
         # closes window when trynb hits 0
         if trynb == 0:
-            acsinfolabel.config(text="closing session...", fg="red")
+            acsinfolabel.config(text="Closing session...", fg="red")
             root.after(500, root.destroy)
 
-# opens user file
+# opens appropriate user file
 def openfile():
     global user
     file_path = ""
@@ -92,18 +92,20 @@ quitbutton = tk.Button(root, text="Quit", bg="black", fg="white", command=root.d
 # entry widget
 entry_widget = tk.Entry(root, width=15,show="•", bg="black", fg="white", font=("Arial", 11))
 
-# info widget
+# info widgets
 acsinfolabel = tk.Label(root, width=13, text="Enter a password", bg="black", fg="white", font=("Arial", 11))
 
 userwelcome = tk.Label(root, width=13, text="Welcome", bg="black", fg="white", font=("Arial", 11))
 
 trynb_widget = tk.Label(root, text=str(trynb) + tries, bg="black", fg="white", font=("Arial", 11))
 
-# widget locations/places widgetsS
+# widget locations/places widgets
 entry_widget.place(x=600, y=300)
 acsinfolabel.place(x=600, y=323)
-trynb_widget.place(x=125, y=75)
+trynb_widget.place(x=520, y=299)
 userwelcome.place(x=600, y=275)
 quitbutton.place(x=1320, y=735)
+
+entry_widget.focus()
 
 root.mainloop()
